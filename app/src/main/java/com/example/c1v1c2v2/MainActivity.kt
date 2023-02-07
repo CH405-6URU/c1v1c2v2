@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.c1v1c2v2.ui.theme.C1v1c2v2Theme
 
 class MainActivity : ComponentActivity() {
@@ -37,6 +38,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             C1v1c2v2Theme(darkTheme = true) {
 
+                val navController = rememberNavController()
+                NavGraph(navController = navController)
 
             }
         }
@@ -44,12 +47,3 @@ class MainActivity : ComponentActivity() {
 }
 
 
-
-
-@Preview(showSystemUi = true)
-@Composable
-fun DefaultPreview() {
-    C1v1c2v2Theme {
-
-    }
-}

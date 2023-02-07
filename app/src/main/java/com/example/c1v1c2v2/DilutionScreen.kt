@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
@@ -17,11 +18,15 @@ import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.c1v1c2v2.ui.theme.C1v1c2v2Theme
 
 @Composable
-fun ValueInputs() {
+fun ValueInputs(navController: NavController) {
     val context = LocalContext.current
     var concOne by remember {
         mutableStateOf("")
@@ -35,12 +40,16 @@ fun ValueInputs() {
     var volumeTwo by remember {
         mutableStateOf("")
     }
+
     Column(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
             .background(Color.DarkGray)
     ) {
+        Button(onClick = { navController.navigate(Screens.Stock.route) }) {
+            Text(text = "to stock creation")
+        }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -58,12 +67,19 @@ fun ValueInputs() {
             )
         }
         // working on getting labels readable and even.
-        Row(horizontalArrangement = Arrangement.SpaceEvenly,
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()){
+            modifier = Modifier.fillMaxWidth()
+        ) {
             Text(text = "Starting concentration", fontSize = 12.sp, color = Color.White)
             Spacer(modifier = Modifier.width(10.dp))
-            Text(text = "Starting volume", fontSize = 12.sp, color = Color.White, modifier = Modifier.padding(end = 15.dp))
+            Text(
+                text = "Starting volume",
+                fontSize = 12.sp,
+                color = Color.White,
+                modifier = Modifier.padding(end = 15.dp)
+            )
         }
         Row(
             horizontalArrangement = Arrangement.SpaceEvenly,
@@ -94,12 +110,19 @@ fun ValueInputs() {
         }
         Spacer(modifier = Modifier.height(50.dp))
 
-        Row(horizontalArrangement = Arrangement.SpaceEvenly,
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth()){
+            modifier = Modifier.fillMaxWidth()
+        ) {
             Text(text = "Final concentration", fontSize = 12.sp, color = Color.White)
             Spacer(modifier = Modifier.width(10.dp))
-            Text(text = "Final volume", fontSize = 12.sp, color = Color.White, modifier = Modifier.padding(end = 15.dp))
+            Text(
+                text = "Final volume",
+                fontSize = 12.sp,
+                color = Color.White,
+                modifier = Modifier.padding(end = 15.dp)
+            )
         }
 
         Row(
@@ -156,3 +179,4 @@ fun ValueInputs() {
         }
     }
 }
+
